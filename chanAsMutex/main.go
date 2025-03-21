@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"sync"
 	"time"
+
+	_ "golang.org/x/sync/errgroup"
 )
 
 func makeRequest(x int) <-chan string {

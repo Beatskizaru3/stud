@@ -15,17 +15,17 @@ func main() {
 		go func() {
 			defer wg.Done()
 
-			mu.RLock() // блокируем RaceCondition
+			mu.RLock() // блокируем только чтение
 
 			_ = counter // Защищаем участок кода от гонки данных для чтения
 
-			mu.RUnlock() // разблокируем
+			mu.RUnlock() // разблокируем чтение
 		}()
 
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			mu.Lock()
+			mu.Lock() // для записи тоже самое
 			counter++
 			mu.Unlock()
 		}()
