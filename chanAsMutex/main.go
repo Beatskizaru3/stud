@@ -99,5 +99,5 @@ func withOutErrGroup() {
 func main() {
 	//chanAsPromise()
 	//chanAsMutex()
-	//withOutErrGroup()
+	withOutErrGroup()
 }
